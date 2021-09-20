@@ -22,7 +22,9 @@ stages:
     steps:
     - task: Docker@2
       inputs:
-        containerRegistry: 'Connection to docker'
-        repository: 'Jumbo test app'
+        containerRegistry: 'Docker connection'
+        repository: 'dockerimg'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
+        tags: |    
+          $(tag) 
