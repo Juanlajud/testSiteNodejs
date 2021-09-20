@@ -29,25 +29,26 @@ stages:
         tags: |    
           $(tag)
 - stage: Provision
-  displayName: 
+  displayName: 'Terraform'
   dependsOn: Build
   jobs:
   - job: Provision
-    displayName: 'Provitioning container instance'
-    pool: 
-      vmimage: ubuntu-latest
-    variables: 
-    - group: TerraformServicePrincipleVars
-    steps: 
-    - script: |
-        set -e
-        terraform init -input=false
-        terraform apply -input=false -auto-approve
-      name: 'terraformRun'
-      displayName: 'Run Terraform'
-      env:
-        ARM_CLIENT_ID: $(ARM_CLIENT_ID)
-        ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET)
-        ARM_TENANT_ID: $(ARM_TENANT_ID)
-        ARM_SUBSCRIPTION_ID: $(ARM_SUBSCRIPTION_ID)
-      
+  displayName: 'Provitioning container instance'
+  pool: 
+    vmimage: ubuntu-latest
+  variables: 
+  - group: TerraformServicePrincipleVars
+  steps: 
+  - script: |
+      set -e
+
+      terraform init -input=false
+      terraform apply -input=false -auto-approve
+    name: 'terraform-run'
+    displayName: 'Run Terraform'
+    env:
+      ARM_CLIENT_ID: $(ARM_CLIENT_ID)
+      ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET)
+      ARM_TENANT_ID: $(ARM_TENANT_ID)
+      ARM_SUBSCRIPTION_ID: $(ARM_SUBSCRIPTION_ID)
+      TF_VAR_imageBuild: $(tag)
