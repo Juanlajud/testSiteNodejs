@@ -23,7 +23,7 @@ stages:
     - task: Docker@2
       inputs:
         containerRegistry: 'Docker connection'
-        repository: 'juanlajud/jumbodemoapp:1.1'
+        repository: 'juanlajud/jumbodemoapp'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
         tags: |    
