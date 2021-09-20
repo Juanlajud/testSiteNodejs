@@ -23,8 +23,31 @@ stages:
     - task: Docker@2
       inputs:
         containerRegistry: 'Docker connection'
-        repository: 'dockerimg'
+        repository: 'juanlajud/jumbodemoapp'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
         tags: |    
-          $(tag) 
+          $(tag)
+- stage: Provision
+  displayName: 'Terraform Provisioning'
+  dependsOn: Build
+  jobs:
+  - job: Provision
+    displayName: 'Provitioning container instance'
+    pool: 
+      vmimage: ubuntu-latest
+    variables: 
+    - group: TerraformServicePrincipleVars
+    steps: 
+    - script: |
+        set -e
+
+        terraform init -input=false
+        terraform apply -input=false -auto-approve
+      name: 'terraform-run'
+      env:
+        ARM_CLIENT_ID: $(ARM_CLIENT_ID)
+        ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET)
+        ARM_TENANT_ID: $(ARM_TENANT_ID)
+        ARM_SUBSCRIPTION_ID: $(ARM_SUBSCRIPTION_ID)
+        TF_VAR_imageBuild: $(tag)
