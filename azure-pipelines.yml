@@ -44,7 +44,7 @@ stages:
 
         terraform init -input=false
         terraform apply -input=false -auto-approve
-      name: 'terraform-run'
+      name: 'terraform_run'
       env:
         ARM_CLIENT_ID: $(ARM_CLIENT_ID)
         ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET)
