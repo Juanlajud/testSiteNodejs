@@ -60,24 +60,6 @@ resource "azurerm_application_insights" "appinsights" {
 
 }
 
-/*
-resource "azurerm_log_analytics_workspace" "example" {
-  name                = "workspace-test"
-  location            = azurerm_resource_group.example.location
-  resource_group_name = azurerm_resource_group.example.name
-  sku                 = "PerGB2018"
-  retention_in_days   = 30
-}
-
-resource "azurerm_application_insights" "example" {
-  name                = "tf-test-appinsights"
-  location            = azurerm_resource_group.example.location
-  resource_group_name = azurerm_resource_group.example.name
-  workspace_id        = azurerm_log_analytics_workspace.example.id
-  application_type    = "web"
-}
-*/
-
 resource "azurerm_servicebus_namespace" "jumbolajudapp" {
   name                = "jumbolajudapp"
   location            = azurerm_resource_group.JWA.location
