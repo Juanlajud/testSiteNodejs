@@ -1,10 +1,10 @@
 const { delay, ServiceBusClient, ServiceBusMessage } = require("@azure/service-bus");
 
 // connection string to your Service Bus namespace
-const connectionString = "Endpoint=sb://lajudjumboapp.servicebus.windows.net/;SharedAccessKeyName=listenqueue;SharedAccessKey=bXTf1lb5SHQpZQfwfDFk6oU7IK62O49VUfAJEoGDrcA=;EntityPath=lajudtestapp"
+const connectionString = "Endpoint=sb://jumbolajudapp.servicebus.windows.net/;SharedAccessKeyName=listentest;SharedAccessKey=XTpb+VfGl0JeztobfHhUb+EBB7Ouf8/YoNQufOBFcNo=;EntityPath=lajudtestqueue"
 
 // name of the queue
-const queueName = "lajudtestapp"
+const queueName = "lajudtestqueue"
 
  async function main() {
 	// create a Service Bus client using the connection string to the Service Bus namespace

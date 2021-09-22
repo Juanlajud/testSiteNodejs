@@ -1,10 +1,10 @@
 const { ServiceBusClient } = require("@azure/service-bus");
 
 // connection string to your Service Bus namespace
-const connectionString = "Endpoint=sb://lajudjumboapp.servicebus.windows.net/;SharedAccessKeyName=sendqueue;SharedAccessKey=WPi2VmCR4pNels26B33VMxJWBNnpC58+nzNfu2dNz3s=;EntityPath=lajudtestapp"
+const connectionString = "Endpoint=sb://jumbolajudapp.servicebus.windows.net/;SharedAccessKeyName=sendtest;SharedAccessKey=zB11xtG1rhVlKPzxrU7Sc+QJ/j0X7+aT+0iQVvX9/O4=;EntityPath=lajudtestqueue"
 
 // name of the queue
-const queueName = "lajudtestapp"
+const queueName = "lajudtestqueue"
 
 const messages = [
 	{ body: "This" },
