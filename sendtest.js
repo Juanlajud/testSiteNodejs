@@ -1,9 +1,7 @@
 const { ServiceBusClient } = require("@azure/service-bus");
 
-// connection string to your Service Bus namespace
 const connectionString = "Endpoint=sb://jumbolajudapp.servicebus.windows.net/;SharedAccessKeyName=sendtest;SharedAccessKey=zB11xtG1rhVlKPzxrU7Sc+QJ/j0X7+aT+0iQVvX9/O4=;EntityPath=lajudtestqueue"
 
-// name of the queue
 const queueName = "lajudtestqueue"
 
 const messages = [
@@ -24,8 +22,7 @@ async function main() {
 
 	try {
 		// Tries to send all messages in a single batch.
-		// Will fail if the messages cannot fit in a batch.
-		// await sender.sendMessages(messages);
+		// Fails if the messages cannot fit in a batch.
 
 		// create a batch object
 		let batch = await sender.createMessageBatch(); 
